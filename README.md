@@ -17,6 +17,7 @@
   <ol>
    <li><a href="#compile">Compile</a></li>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#output">Output</a></li>
   </ol>
 </details>
 
