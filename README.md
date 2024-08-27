@@ -53,5 +53,24 @@ go build -o gobsidian-mac .
 ## Usage
 
 ``` bash
-./gobsidian https://publish.obsidian.md/sitename directory
+./gobsidian https://publish.obsidian.md/addielamarr/ directory
+```
+
+## Output
+
+Progress output:
+``` bash
+2024/08/28 00:03:59 Downloading https://publish-01.obsidian.md/access/33369a9aaf7ce835e7764f80f4622ceb/00 Home MOC.md
+2024/08/28 00:03:59 Downloading https://publish-01.obsidian.md/access/33369a9aaf7ce835e7764f80f4622ceb/01 Cybersecurity Mastery.md
+...
+2024/08/28 00:03:59 Downloading https://publish-01.obsidian.md/access/33369a9aaf7ce835e7764f80f4622ceb/Zero Knowledge Proof-based cryptography.md
+```
+
+Directory tree:
+``` bash
+directory/
+├── 00 Home MOC.md
+├── 01 Cybersecurity Mastery.md
+...
+└── Zero Knowledge Proof-based cryptography.md
 ```
