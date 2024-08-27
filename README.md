@@ -3,7 +3,7 @@
 <h3 align="center">Gobsidian CLI</h3>
 
 <p align="center">
-    Golang based CLI tool to download obsidian published sites. Supports parallel downloads.
+    Golang based CLI tool to download obsidian publish sites. Supports parallel downloads.
 </p>
 
 <p align="center">
