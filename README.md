@@ -1,6 +1,6 @@
 <p align="center">
 
-<h3 align="center">Gobisidian CLI</h3>
+<h3 align="center">Gobsidian CLI</h3>
 
 <p align="center">
     Golang based CLI tool to download obsidian published sites. Supports parallel downloads.
@@ -31,7 +31,7 @@ To be able to build the code you should have:
 ``` powershell
 setx GOOS=windows 
 setx GOARCH=amd64
-go build -o gobisidian.exe .
+go build -o gobsidian.exe .
 ```
 
 #### Linux
@@ -39,7 +39,7 @@ go build -o gobisidian.exe .
 ``` bash
 export GOARCH=amd64
 export GOOS=linux
-go build -o gobisidian .
+go build -o gobsidian .
 ```
 
 #### Macintosh
@@ -47,11 +47,11 @@ go build -o gobisidian .
 ``` bash
 export GOOS=darwin 
 export GOARCH=amd64
-go build -o gobisidian-mac .
+go build -o gobsidian-mac .
 ```
 
 ## Usage
 
 ``` bash
-./gobisidian https://publish.obsidian.md/sitename directory
+./gobsidian https://publish.obsidian.md/sitename directory
 ```
