@@ -40,12 +40,16 @@ func main() {
 	checkError(err, fasthttp.StatusOK)
 
 	var wg sync.WaitGroup
+	total := len(cacheData)
+	progress := 0
+	progressMutex := &sync.Mutex{}
+
 	for i := range cacheData {
 		urlString = "https://" + host + "/access/" + uid + "/" + i
 		path := filepath.Join(args[2], i)
 		createParentFolder(path)
 		wg.Add(1)
-		go downloadAndSave(urlString, path, &wg)
+		go downloadAndSave(urlString, path, &wg, &progress, total, progressMutex)
 	}
 	wg.Wait()
 }
@@ -68,18 +72,49 @@ func generateSiteInfo(resp []byte) (map[string]interface{}, error) {
 	return siteInfo, err
 }
 
-func downloadAndSave(url string, path string, wg *sync.WaitGroup) {
+func downloadAndSave(url string, path string, wg *sync.WaitGroup, progress *int, total int, progressMutex *sync.Mutex) {
 	defer wg.Done()
-	log.Println("Downloading", url)
 	status, resp, err := fasthttp.Get(nil, url)
 	checkError(err, status)
 
 	out, err := os.Create(path)
 	checkError(err, fasthttp.StatusOK)
-	defer out.Close()
+	defer func(out *os.File) {
+		err = out.Close()
+		if err != nil {
+			log.Fatal(err)
+		}
+	}(out)
 
 	_, err = io.WriteString(out, string(resp))
 	checkError(err, fasthttp.StatusOK)
+
+	progressMutex.Lock()
+	*progress++
+	printProgressBar(*progress, total)
+	progressMutex.Unlock()
+}
+
+func printProgressBar(progress int, total int) {
+	percent := float64(progress) / float64(total) * 100
+	barLength := 50
+	progressLength := int(float64(barLength) * percent / 100)
+	bar := fmt.Sprintf("[%s%s] %d%%",
+		string(repeat('#', progressLength)),
+		string(repeat(' ', barLength-progressLength)),
+		int(percent))
+	fmt.Printf("\r%s", bar)
+	if progress == total {
+		fmt.Println()
+	}
+}
+
+func repeat(char rune, count int) []rune {
+	result := make([]rune, count)
+	for i := 0; i < count; i++ {
+		result[i] = char
+	}
+	return result
 }
 
 func getArgs() []string {

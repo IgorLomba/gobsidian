@@ -61,10 +61,7 @@ go build -o gobsidian-mac .
 
 Progress output:
 ``` bash
-2024/08/28 00:03:59 Downloading https://publish-01.obsidian.md/access/33369a9aaf7ce835e7764f80f4622ceb/00 Home MOC.md
-2024/08/28 00:03:59 Downloading https://publish-01.obsidian.md/access/33369a9aaf7ce835e7764f80f4622ceb/01 Cybersecurity Mastery.md
-...
-2024/08/28 00:03:59 Downloading https://publish-01.obsidian.md/access/33369a9aaf7ce835e7764f80f4622ceb/Zero Knowledge Proof-based cryptography.md
+[##################################################] 100%
 ```
 
 Directory tree:
