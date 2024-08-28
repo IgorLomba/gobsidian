@@ -1,6 +1,6 @@
 <p align="center">
 
-<h3 align="center">Gobsidian CLI</h3>
+# Gobsidian CLI
 
 <p align="center">
     Golang based CLI tool to download obsidian publish sites. Supports parallel downloads.
